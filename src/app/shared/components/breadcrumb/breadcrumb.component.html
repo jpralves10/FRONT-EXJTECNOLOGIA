@@ -1,0 +1,9 @@
+<ol id="breadcrumbsContainer" class="breadcrumbs">
+    <li class="breadcrumb-item" 
+        [ngClass]="calculateBreadcrumbItemClasses(breadcrumb)" 
+        *ngFor="let breadcrumb of breadcrumbs | async">
+        <a (click)="navigate(breadcrumb)">
+            {{breadcrumb.label}}
+        </a>
+    </li>
+</ol>

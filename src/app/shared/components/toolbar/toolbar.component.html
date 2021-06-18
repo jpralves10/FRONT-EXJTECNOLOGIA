@@ -1,0 +1,16 @@
+<div *ngIf="authModel" class="toolbar-container margin-top-30">
+    <div>
+        <app-breadcrumb></app-breadcrumb>
+
+        <div class="float-right">
+            <span id="idNameToolbarBemVindo" class="login text-regular font-size-14">Bem-Vindo</span>
+            <span *ngIf="userLogged" id="idNameToolbarName" class="login text-xbold font-size-14">
+                {{userLogged.name}}
+            </span>
+            <span class="div-line">|</span>
+            <span (click)="logout()" class="logout text-xbold font-size-14 color-text-orange">
+                <em class="icon-open-lock font-size-18 color-text-orange"></em>
+            </span>
+        </div>
+    </div>
+</div>

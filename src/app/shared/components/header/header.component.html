@@ -1,0 +1,52 @@
+<header id="header" class="fixed-top ">
+    <div class="container d-flex align-items-center">
+
+        <!--h1 class="logo me-auto"><a href="index.html">ExJ</a></h1-->
+
+        <a href="index.html" class="logo me-auto">
+            <img src="assets/images/exj-icon.png" alt="" class="img-fluid">
+        </a>
+
+        <nav id="navbar" class="navbar">
+            <ul>
+                <!--li><a class="nav-link scrollto active" href="#hero">Artigos</a></li-->
+                <li>
+                    <div class="input-group">
+                        <input class="form-control border-end-0 border border-fixed" 
+                                type="search" 
+                                value=""
+                                placeholder="Pesquisar"
+                                id="search-input"
+                                style="border-top-right-radius: .25rem;
+                                border-bottom-right-radius: .25rem;
+                                margin-left: 25px;">
+                        <span class="input-group-append">
+                            <button class="btn btn-outline-secondary 
+                                    bg-white border-start-0 border-bottom-0 
+                                    border ms-n5" type="button">
+                                <i class="fa fa-search"></i>
+                            </button>
+                        </span>
+                    </div>
+                </li>
+                <li>
+                    <a class="nav-link scrollto" 
+                        routerLink="/painelcontrole" 
+                        routerLinkActive="active">Faça uma doação</a>
+                </li>
+                <li>
+                    <a class="nav-link scrollto" 
+                        routerLink="/first-component" 
+                        routerLinkActive="active">Entrar</a>
+                </li>
+                <li>
+                    <a class="nav-link scrollto" 
+                        routerLink="/first-component" 
+                        routerLinkActive="active">Cadastre-se</a>
+                </li>
+            </ul>
+            <i class="bi bi-list mobile-nav-toggle"></i>
+        </nav>
+
+    </div>
+</header>

@@ -1,0 +1,65 @@
+::ng-deep:root {
+    --input-search-placeholder-color: #CCCCCC;
+}
+
+.contract-container {
+    display: flex;
+    transition: ease-in-out;
+    transition-duration: 0.5s;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    border-radius: 5px;
+    border-top: 7px solid #EC7000;
+    background-color: #FFFFFF;
+    position: fixed;
+    margin-top: 30px;
+    width: 1%;
+    height: auto;
+}
+
+.contract-container:hover {
+    display: flex;
+    z-index: 999;
+    transition: ease-in-out;
+    transition-duration: 0.5s;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+    border-radius: 5px;
+    border-top: 7px solid #EC7000;
+    background-color: #FFFFFF;
+    position: fixed;
+    margin-top: 30px;
+    width: 7%;
+    height: auto;
+}
+
+.contract-container .vertical-menu{
+    transition: ease-in-out;
+    transition-duration: 0.5s;
+    display: flex;
+    flex-direction: column;
+}
+
+.contract-container .vertical-menu a {
+    transition: ease-in-out;
+    transition-duration: 0.5s;
+    position: relative;
+    display: flex;
+    opacity: 0;
+    top: 0;
+    left: -400px;
+}
+
+.contract-container:hover .vertical-menu {
+    transition: ease-in-out;
+    transition-duration: 0.5s;
+    display: flex;
+    flex-direction: column;
+}
+
+.contract-container:hover .vertical-menu a {
+    transition: ease-in-out;
+    opacity: 1;
+    left: 0;
+    top: auto;
+    transition-duration: 0.5s;
+    position: relative;
+}
