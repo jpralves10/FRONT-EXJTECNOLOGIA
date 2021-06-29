@@ -1,0 +1,48 @@
+<div class="body-modal-size" id="confirmedModalId">
+    <div class="itau-color-default line-modal-border"></div>
+
+    <div class="container container-modal-confirmation">
+        <div class="row">
+            <div class="col-12">
+                <em id="btnCloseModalItem" 
+                    class="icon-close font-size-10 float-right cursor-pointer"
+                    aria-label="Close"
+                    (click)="activeModal.dismiss('Cross click')"></em>
+            </div>
+        </div>
+        <div class="row margin-bottom-10">
+            <div class="col-12">
+                <span id="idConfirmationModalTitle" 
+                    class="itau-text-bold font-size-14 itau-color-text-black-medium">
+                    {{modalTitle}}
+                </span>
+            </div>
+        </div>
+        <div class="padding-text-card-description">
+            <span class="text-rule-description" id="idConfirmationMessage">
+                {{modalConfirmationMessage}}
+            </span>
+        </div>
+    </div>
+
+    <div>
+        <div class="footer-color">
+            <div class="padding-border">
+                <div class="float-right">
+                    <button id="idCancelBtn" 
+                        type="submit" 
+                        class="btn-height-width-87-25 itau-text-xbold btn btn-itau-light font-size-12 no-box-shadow text-button-15"
+                        (click)="dismissModal()">
+                        {{modalCancelButtonText}}
+                    </button>
+                    <button id="idConfirmBtn" 
+                        type="submit"
+                        class="btn-height-width-87-25 itau-xbold btn btn-itau-second font-size-12 no-box-shadow text-button-15"
+                        (click)="closeModal()">
+                        {{modalConfirmButtonText}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

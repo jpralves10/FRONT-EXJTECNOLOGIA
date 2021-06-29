@@ -4,8 +4,8 @@ import { Observable } from "rxjs";
 import { tap } from "rxjs/operators";
 import { HttpStatus } from "src/app/shared/constants/http-status.constants";
 import { HttpConstants } from "src/app/shared/constants/http.constants";
-import { AuthTokenService } from "../../auth/auth-token.service";
-import { EnvironmentService } from "../../env/environment.service";
+import { AuthTokenService } from "../../auth-token/auth-token.service";
+import { EnvironmentService } from "../../environment/environment.service";
 import { SessionManagerService } from "../../session-manager/session-manager.service";
 
 /**
@@ -16,7 +16,7 @@ export class HttpRequestInterceptor implements HttpInterceptor {
 
     constructor(
         private _injector: Injector,
-        private sessionManagerService: SessionManagerService
+        private session: SessionManagerService
     ){}
 
     /**
@@ -36,11 +36,11 @@ export class HttpRequestInterceptor implements HttpInterceptor {
         let headers: HttpHeaders = new HttpHeaders();
 
         if(model){
-            let url = model.appSettings.authSettings.sts_proxy_host;
+            let url = model.appSettings.authSettings.sts_host;
             //Impede que adiciona headers nas requisições para o STS
             if(!request.url.startsWith(url)){
                 if(!request.headers.has(HttpConstants.headerAuthorization)){
-                    let accessToken = this.sessionManagerService.getAccessToken();
+                    let accessToken = this.session.getTokenLogin();
                     if(accessToken){
                         headers = headers.set(
                             HttpConstants.headerAuthorization,
@@ -60,9 +60,9 @@ export class HttpRequestInterceptor implements HttpInterceptor {
                 (event: HttpEvent<any>) => {},
                 (error: HttpErrorResponse) => {
                     if(error.status === HttpStatus.unauthorized){
-                        this.sessionManagerService.clearSession();
+                        this.session.clearSession();
                         const authTokenService = this._injector.get(AuthTokenService);
-                        authTokenService.redirectLogin(authTokenService.getPathValue())
+                        authTokenService.logoutClient().subscribe(isOK => {});
                     }
                 }
             )

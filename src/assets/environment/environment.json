@@ -1,23 +1,15 @@
 {
     "prduction": false,
     "name": "mock",
-    "urlExJ": "",
+    "urlExJ": "http://localhost:4200",
     "appSettings": {
-        "cadastro_application_host": "http://localhost:8081",
-        "admin_application_host": "http://localhost:8082",
-        "economia_application_host": "http://localhost:8083",
-        "contabil_application_host": "http://localhost:8084",
+        "exjtecnologia_application_host": "http://localhost:8081",
+        "exjfinanceiro_application_host": "http://localhost:8082",
         "authSettings": {
-            "disable_security": true,
-            "redirect_uri": "http://localhost:4200/",
-            "response_mode": "query",
-            "grant_type": "authorization_code",
+            "sts_host": "http://localhost:8080",
+            "client_id": "exj-microservice",
+            "redirect_uri": "http://localhost:4200",
             "response_type": "code",
-            "resource": "https://des-web-gestaogarantia.mbi.cloud.ihf",
-            "nonce": "nonce",
-            "sts_host": "https://des-sts-int.mbi.cloud.ihf",
-            "sts_proxy_host": "https://des-sts-int.mbi.cloud.ihf",
-            "client_id": "6c8aa83c-5215-493f-97c9-207f4156230a",
             "scope": "openid"
         }
     }

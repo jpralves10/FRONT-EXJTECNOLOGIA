@@ -1,0 +1,45 @@
+<div class="body-modal-size" id="confirmedModalId">
+    <div class="itau-color-default line-modal-border"></div>
+
+    <div class="container container-modal-confirmation">
+        <div class="row">
+            <div class="col-12">
+                <i class="fas fa-times close-modal" (click)="activeModal.dismiss('Cross click')"></i> 
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-12">
+                <div id="idConfirmationModalTitle" 
+                    class="text-title">
+                    {{modalTitle}}
+                </div>
+            </div>
+        </div>
+        <div>
+            <div class="text-description" id="idConfirmationMessage">
+                {{modalConfirmationMessage}}
+            </div>
+        </div>
+    </div>
+
+    <div>
+        <div class="footer-container">
+            <div class="padding-border">
+                <div class="float-right">
+                    <!--button id="idCancelBtn" 
+                        type="submit" 
+                        class="btn-modal"
+                        (click)="dismissModal()">
+                        {{modalCancelButtonText}}
+                    </button-->
+                    <button id="idConfirmBtn" 
+                        type="submit"
+                        class="btn-modal"
+                        (click)="closeModal()">
+                        {{modalConfirmButtonText}}
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

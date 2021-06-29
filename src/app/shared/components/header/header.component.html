@@ -12,18 +12,19 @@
                 <!--li><a class="nav-link scrollto active" href="#hero">Artigos</a></li-->
                 <li>
                     <div class="input-group">
-                        <input class="form-control border-end-0 border border-fixed" 
+                        <input class="form-control" 
                                 type="search" 
                                 value=""
                                 placeholder="Pesquisar"
                                 id="search-input"
                                 style="border-top-right-radius: .25rem;
                                 border-bottom-right-radius: .25rem;
-                                margin-left: 25px;">
+                                margin-left: 25px;box-shadow: 0 0 0 0;
+                                border: 0 none;outline: 0;color: #717D7E;">
                         <span class="input-group-append">
                             <button class="btn btn-outline-secondary 
                                     bg-white border-start-0 border-bottom-0 
-                                    border ms-n5" type="button">
+                                    border btn-pesquisar" type="button">
                                 <i class="fa fa-search"></i>
                             </button>
                         </span>
@@ -36,13 +37,12 @@
                 </li>
                 <li>
                     <a class="nav-link scrollto" 
-                        routerLink="/first-component" 
-                        routerLinkActive="active">Entrar</a>
+                        routerLink="/login">Entrar</a>
+                        <!-- routerLinkActive="active">Entrar</a-->
                 </li>
                 <li>
                     <a class="nav-link scrollto" 
-                        routerLink="/first-component" 
-                        routerLinkActive="active">Cadastre-se</a>
+                        routerLink="/cadastrar">Cadastre-se</a>
                 </li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>

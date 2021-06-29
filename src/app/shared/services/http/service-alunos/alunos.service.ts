@@ -3,7 +3,7 @@ import { Injectable } from "@angular/core";
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 import { Aluno } from "src/app/shared/model/aluno.model";
-import { EnvironmentService } from "../../env/environment.service";
+import { EnvironmentService } from "../../environment/environment.service";
 import { SessionManagerService } from "../../session-manager/session-manager.service";
 
 @Injectable()
@@ -48,6 +48,6 @@ export class AlunosService {
 
     private setupApiBaseUrl(): string {
         return `${this.environmentService.envModel.appSettings
-            .cadastro_application_host}/${this.alunosApiVersion}`;
+            .exjtecnologia_application_host}/${this.alunosApiVersion}`;
     }
 }

@@ -1,6 +1,6 @@
 import { CommonModule } from "@angular/common";
 import { NgModule } from "@angular/core";
-import { FormsModule } from "@angular/forms";
+import { FormsModule, ReactiveFormsModule } from "@angular/forms";
 
 import { NgMultiSelectDropDownModule } from 'ng-multiselect-dropdown';
 import { BreadcrumbComponent } from "./components/breadcrumb/breadcrumb.component";
@@ -15,12 +15,19 @@ import { StringUtilsService } from "./utils/string-utils.service";
 import { FooterComponent } from './components/footer/footer.component';
 import { HomeComponent } from './components/home/home.component';
 import { RouterModule } from "@angular/router";
+import { LogoutComponent } from './components/logout/logout.component';
+import { LoginComponent } from './components/header/login/login.component';
+import { CadastrarComponent } from './components/header/cadastrar/cadastrar.component';
+import { ConfirmedModalComponent } from './components/confirmed-modal/confirmed-modal.component';
+import { ApresentacaoModalComponent } from './components/home/apresentacao-modal/apresentacao-modal.component';
+import { BrowserModule } from "@angular/platform-browser";
 
 @NgModule({
     imports: [
         CommonModule,
         FormsModule,
         RouterModule,
+        ReactiveFormsModule,
         NgMultiSelectDropDownModule.forRoot(),
     ],
     declarations: [
@@ -31,7 +38,12 @@ import { RouterModule } from "@angular/router";
         ToolbarComponent,
         BreadcrumbComponent,
         FooterComponent,
-        HomeComponent
+        HomeComponent,
+        LogoutComponent,
+        LoginComponent,
+        CadastrarComponent,
+        ConfirmedModalComponent,
+        ApresentacaoModalComponent
     ],
     exports: [
         HeaderComponent,
@@ -39,7 +51,9 @@ import { RouterModule } from "@angular/router";
         FooterComponent,
         ToolbarLateralComponent,
         ToolbarComponent,
-        BreadcrumbComponent
+        BreadcrumbComponent,
+        LogoutComponent,
+        LoginComponent
     ],
     providers: [
         DateUtilsService,

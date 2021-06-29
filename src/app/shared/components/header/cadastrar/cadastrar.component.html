@@ -1,0 +1,57 @@
+<!-- ======= Cadastrar Section ======= -->
+<section id="registrar" class="d-flex align-items-center">
+    <div class="container">
+        <div class="row d-flex justify-content-center">
+            <div class="registrar">Registre-se</div>
+        </div>
+
+        <form [formGroup]="formCadastrar" (ngSubmit)="cadastrar()">
+            <div class="row">
+                <div>
+                    <div class="row">
+                        <div class="col-50">
+                            <label for="nome"> Nome</label>
+                            <input type="text" id="nome" name="nome" formControlName='nome'>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-50">
+                            <label for="sobrenome"> Sobrenome</label>
+                            <input type="text" id="sobrenome" name="sobrenome" formControlName='sobrenome'>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-50">
+                            <label for="email"> E-mail</label>
+                            <input type="text" id="email" name="email" formControlName='email'>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-50">
+                            <label for="senha"> Senha</label>
+                            <input type="password" id="senha" name="senha" formControlName='senha'>
+                        </div>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-50">
+                            <label for="confirmar"> Confirmar Senha</label>
+                            <input type="password" id="confirmar" name="confirmar" formControlName='confirmar'>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row d-flex justify-content-center">
+                <button id="idConfirmBtn" 
+                    type="submit"
+                    class="btn-modal">
+                    Cadastrar
+                </button>
+            </div>
+        </form>
+    </div>
+</section>

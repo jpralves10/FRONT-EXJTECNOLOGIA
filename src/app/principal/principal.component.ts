@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { AuthTokenService } from '../shared/services/auth/auth-token.service';
+import { AuthTokenService } from '../shared/services/auth-token/auth-token.service';
+import { SessionManagerService } from '../shared/services/session-manager/session-manager.service';
 
 @Component({
   selector: 'app-principal',
@@ -9,12 +10,14 @@ import { AuthTokenService } from '../shared/services/auth/auth-token.service';
 export class PrincipalComponent implements OnInit {
 
   constructor(
-    private authTokenService: AuthTokenService
+    private authTokenService: AuthTokenService,
+    private session: SessionManagerService
   ) { }
 
   ngOnInit(): void {
-    this.authTokenService.clearUrl();
-    this.authTokenService.createTokenTimeout();
-  }
 
+    if(this.session.getTokenLogin()){
+      this.authTokenService.createTokenTimeout();
+    }
+  }
 }

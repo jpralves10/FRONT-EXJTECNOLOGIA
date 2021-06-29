@@ -3,7 +3,7 @@ import { ActivatedRoute } from "@angular/router";
 import { HttpStatus } from "../../constants/http-status.constants";
 import { Breadcrumb } from "../../model/breadcrumb.model";
 import { StringUtilsService } from "../../utils/string-utils.service";
-import { EnvironmentService } from "../env/environment.service";
+import { EnvironmentService } from "../environment/environment.service";
 
 @Injectable()
 export class BreadcrumbService {

@@ -1,75 +1,65 @@
 import { Injectable } from "@angular/core";
-import { AuthModel } from "../../entities/auth.model";
-import { PermissoesUsuario } from "../../model/permissoes-usuario";
+import { Profile } from "../../model/profile.model";
 import { Token } from "../../model/token.model";
-import jwtDecode, * as jwt from 'jwt-decode';
+import jwtDecode from "jwt-decode";
 
 @Injectable()
 export class SessionManagerService {
 
     constructor(){}
 
-    private readonly authModelKey: string = 'authModel';
-    private readonly permissaoModelKey: string = 'permissaoModel';
+    private readonly profileKey: string = 'profileKey';
+    private readonly tokenLoginKey: string = 'tokenLoginKey';
+    private readonly refreshLoginKey: string = 'refreshLoginKey';
+    private readonly tokenAdminKey: string = 'tokenAdminKey';
+    private readonly refreshAdminKey: string = 'refreshAdminKey';
 
-    /* AuthModel */
+    /* ProfileKey */
 
-    public setAuthModel(authModel: AuthModel){
-        localStorage.setItem(this.authModelKey, JSON.stringify(authModel));
+    public setProfile(profile: Profile){
+        localStorage.setItem(this.profileKey, JSON.stringify(profile));
     }
 
-    public getAuthModel(): AuthModel | null {
-        let authModel = localStorage.getItem(this.authModelKey);
-        if(authModel){
-            return JSON.parse(authModel)
+    public getProfile(): Profile | null {
+        let profile = localStorage.getItem(this.profileKey);
+        return profile ? JSON.parse(profile) : null
+    }
+
+    /* TokenLoginKey */
+
+    public setTokenLogin(tokenLogin: string){
+        let token = jwtDecode<Token>(tokenLogin)
+        token.dataTokenInMilis = new Date().getTime()
+        localStorage.setItem(this.tokenLoginKey, JSON.stringify(token));
+
+        let profile: Profile = {
+            username: token.preferred_username,
+            firstName: token.given_name,
+            lastName: token.family_name,
+            email: token.email,
+            emailVerified: token.email_verified,
+            roles: token.realm_access.roles
         }
-        return null;
+        this.setProfile(profile);
     }
 
-    /* PermissaoUsuario */
-
-    public setPermissao(per: Array<PermissoesUsuario>){
-        localStorage.setItem(this.permissaoModelKey, JSON.stringify(per))
+    public getTokenLogin(): Token | null {
+        let tokenLogin = localStorage.getItem(this.tokenLoginKey);
+        return tokenLogin ? JSON.parse(tokenLogin) as Token : null
     }
 
-    public getPermissao(): Array<PermissoesUsuario> | null {
-        let permissao = localStorage.getItem(this.permissaoModelKey);
-        if(permissao){
-            return JSON.parse(permissao)
-        }
-        return null;
+    /* RefreshLoginKey */
+
+    public setRefreshLogin(tokenRefresh: string | undefined){
+        localStorage.setItem(this.refreshLoginKey, JSON.stringify(tokenRefresh));
     }
 
-    /* AccessToken */
-
-    public getAccessToken(): string | null {
-        let authModel = this.getAuthModel();
-        if(authModel){
-            return authModel.access_token;
-        }
-        return null;
-    }
-
-    /* UsuarioLogado */
-
-    public getUsuarioLogado(): string | undefined {
-        return this.decodeTokenAndGetUser();
-    }
-
-    private decodeTokenAndGetUser(): string | undefined{
-        let token = this.getAccessToken();
-        if(token){
-            return jwtDecode<Token>(token).usr;
-        }
-        return;
+    public getRefreshLogin(): string | any {
+        let tokenRefresh = localStorage.getItem(this.refreshLoginKey);
+        return tokenRefresh ? tokenRefresh : null
     }
 
     /* ClearSession */
-
-    public deleteAccessToken(): void {
-        localStorage.removeItem(this.authModelKey);
-        localStorage.removeItem(this.permissaoModelKey);
-    }
 
     public clearSession(): void {
         localStorage.clear();

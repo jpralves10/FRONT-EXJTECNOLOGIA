@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { EnvironmentService } from "../env/environment.service";
+import { EnvironmentService } from "../environment/environment.service";
 import * as SockJS from "sockjs-client";
 import * as Stomp from "stompjs";
 
@@ -24,6 +24,6 @@ export class ControlPanelWebSocketService {
     }
 
     private setupApiBaseUrl(): string {
-        return `${this._environmentService.envModel.appSettings.cadastro_application_host}`;
+        return `${this._environmentService.envModel.appSettings.exjtecnologia_application_host}`;
     }
 }

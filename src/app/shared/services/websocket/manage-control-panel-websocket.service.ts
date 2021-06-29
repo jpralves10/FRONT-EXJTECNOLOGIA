@@ -1,6 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Subscription } from "rxjs";
-import { SessionManagerService } from "../session-manager/session-manager.service";
+import { SessionManagerService } from "../session-manager/session-manager-old.service";
 import { ControlErrorPanelSubjectService } from "./control-error-panel-subject.service";
 import { ControlPanelWebSocketService } from "./control-panel-websocket.service";
 

@@ -1,5 +1,6 @@
 import { CommonModule } from "@angular/common";
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from "@angular/core";
+import { NgModule } from "@angular/core";
+import { SessionManagerService } from "../shared/services/session-manager/session-manager.service";
 import { SharedModule } from "../shared/shared.module";
 import { PrincipalRoutingModule } from "./principal-routing.module";
 import { PrincipalComponent } from "./principal.component";
@@ -12,6 +13,9 @@ import { PrincipalComponent } from "./principal.component";
         CommonModule,
         PrincipalRoutingModule,
         SharedModule
+    ],
+    providers: [
+        SessionManagerService
     ]
 })
 export class PrincipalModule {}

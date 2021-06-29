@@ -1,0 +1,62 @@
+<!-- ======= Login Section ======= -->
+<section id="login" class="d-flex align-items-center">
+    <div class="container" *ngIf="!modoRecuperar">
+        <div class="row d-flex justify-content-center">
+            <div class="login">Login</div>
+        </div>
+
+        <div class="row">
+            <div>
+                <div class="row">
+                    <div class="col-50">
+                        <label for="email"> E-mail</label>
+                        <input type="text" id="email" name="email">
+                    </div>
+                </div>
+        
+                <div class="row">
+                    <div class="col-50">
+                        <label for="senha"> Senha</label>
+                        <input type="password" id="senha" name="senha">
+                        <a class="recuperar-senha" (click)="esqueceuSenha()">Esqueceu a senha?</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row d-flex justify-content-center">
+            <button id="idConfirmBtn" 
+                type="submit"
+                class="btn-modal"
+                (click)="login()">
+                Entrar
+            </button>
+        </div>
+    </div>
+
+    <div class="container" *ngIf="modoRecuperar">
+        <div class="row d-flex justify-content-center">
+            <div class="recuperar">Recuperar Senha</div>
+        </div>
+
+        <div class="row">
+            <div>
+                <div class="row">
+                    <div class="col-50">
+                        <label for="emailRecuperar">Enviar para o e-mail:</label>
+                        <input type="text" id="emailRecuperar" name="emailRecuperar">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row d-flex justify-content-center">
+            <button id="idConfirmBtn" 
+                type="submit"
+                class="btn-modal"
+                (click)="recuperarSenha()">
+                Enviar
+            </button>
+        </div>
+    </div>
+</section>
