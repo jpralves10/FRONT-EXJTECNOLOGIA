@@ -5,6 +5,7 @@ import { Observable, of } from "rxjs";
 import { catchError, map } from "rxjs/operators";
 import { AuthSettingsModel } from "../../entities/auth-settings.model";
 import { TokenModel } from "../../entities/token.model";
+import { Profile } from "../../model/profile.model";
 import { EnvironmentService } from "../environment/environment.service";
 import { SessionManagerService } from "../session-manager/session-manager.service";
 
@@ -17,6 +18,7 @@ export class AuthTokenService {
     private authEnv: AuthSettingsModel;
     private tokenServiceUrl = '/auth/realms/realmExj/protocol/openid-connect/token';
     private tokenLogoutUrl = '/auth/realms/realmExj/protocol/openid-connect/logout';
+    private usuarioUrl = '/auth/admin/realms/realmExj/users';
 
     constructor(
         private http: HttpClient,
@@ -141,6 +143,28 @@ export class AuthTokenService {
             }),
             catchError(err => {
                 return of(false);
+            })
+        )
+    }
+
+    /**
+     * Criar Usuário 
+     */
+     public cadastrarUsuario(profile: Profile): Observable<boolean | number> {
+        const headers = new HttpHeaders({
+            'Content-Type': 'application/json',
+            'Authorization': 'Bearer ' + this.sessionService.getTokenLoginString()
+        });
+
+        return this.http.post(
+            `${this.authEnv.sts_host}${this.usuarioUrl}`, profile, { headers }
+        )
+        .pipe(
+            map(res => {
+                return true;
+            }),
+            catchError(err => {
+                return of(err.status);
             })
         )
     }

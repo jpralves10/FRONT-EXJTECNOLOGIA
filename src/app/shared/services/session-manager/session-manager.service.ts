@@ -2,27 +2,33 @@ import { Injectable } from "@angular/core";
 import { Profile } from "../../model/profile.model";
 import { Token } from "../../model/token.model";
 import jwtDecode from "jwt-decode";
+import { BehaviorSubject, Observable } from "rxjs";
 
 @Injectable()
 export class SessionManagerService {
 
-    constructor(){}
+    private profileSource: BehaviorSubject<Profile> = new BehaviorSubject(this.getProfile());
+    public profile: Observable<Profile> = this.profileSource.asObservable();
+
+    private tokenSource: BehaviorSubject<Token> = new BehaviorSubject(this.getTokenLogin());
+    public token: Observable<Token> = this.tokenSource.asObservable();
 
     private readonly profileKey: string = 'profileKey';
     private readonly tokenLoginKey: string = 'tokenLoginKey';
+    private readonly tokenLoginString: string = 'tokenLoginString';
     private readonly refreshLoginKey: string = 'refreshLoginKey';
-    private readonly tokenAdminKey: string = 'tokenAdminKey';
-    private readonly refreshAdminKey: string = 'refreshAdminKey';
+
+    constructor(){ }
 
     /* ProfileKey */
 
     public setProfile(profile: Profile){
         localStorage.setItem(this.profileKey, JSON.stringify(profile));
+        this.profileSource.next(profile);
     }
 
-    public getProfile(): Profile | null {
-        let profile = localStorage.getItem(this.profileKey);
-        return profile ? JSON.parse(profile) : null
+    public getProfile(): Profile {
+        return JSON.parse(localStorage.getItem(this.profileKey) as string);
     }
 
     /* TokenLoginKey */
@@ -31,6 +37,8 @@ export class SessionManagerService {
         let token = jwtDecode<Token>(tokenLogin)
         token.dataTokenInMilis = new Date().getTime()
         localStorage.setItem(this.tokenLoginKey, JSON.stringify(token));
+        localStorage.setItem(this.tokenLoginString, tokenLogin);
+        this.tokenSource.next(token);
 
         let profile: Profile = {
             username: token.preferred_username,
@@ -43,9 +51,12 @@ export class SessionManagerService {
         this.setProfile(profile);
     }
 
-    public getTokenLogin(): Token | null {
-        let tokenLogin = localStorage.getItem(this.tokenLoginKey);
-        return tokenLogin ? JSON.parse(tokenLogin) as Token : null
+    public getTokenLogin(): Token {
+        return JSON.parse(localStorage.getItem(this.tokenLoginKey) as string);
+    }
+
+    public getTokenLoginString(): string {
+        return localStorage.getItem(this.tokenLoginString) as string;
     }
 
     /* RefreshLoginKey */
@@ -63,5 +74,7 @@ export class SessionManagerService {
 
     public clearSession(): void {
         localStorage.clear();
+        this.profileSource.next(this.getProfile());
+        this.tokenSource.next(this.getTokenLogin());
     }
 }

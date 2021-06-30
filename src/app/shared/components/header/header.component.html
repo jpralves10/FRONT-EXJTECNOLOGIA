@@ -35,15 +35,55 @@
                         routerLink="/painelcontrole" 
                         routerLinkActive="active">Faça uma doação</a>
                 </li>
-                <li>
+                <li *ngIf="!usuarioLogado">
                     <a class="nav-link scrollto" 
                         routerLink="/login">Entrar</a>
                         <!-- routerLinkActive="active">Entrar</a-->
                 </li>
-                <li>
+                <li *ngIf="!usuarioLogado">
                     <a class="nav-link scrollto" 
                         routerLink="/cadastrar">Cadastre-se</a>
                 </li>
+                <li class="dropdown" *ngIf="usuarioLogado">
+                    <a>
+                        <span class="profile-name">
+                            {{profile.firstName}} {{profile.lastName}}
+                        </span> 
+                        <i class="fas fa-chevron-down" style="font-size: 0.7em;"></i>
+                    </a>
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-user-circle"></i>
+                                <span>Perfil</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-comment-dots"></i>
+                                <span>Mensagens</span> 
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-chart-line"></i>
+                                <span>Estatística</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <i class="fas fa-bookmark"></i>
+                                <span>Favoritos</span>
+                            </a>
+                        </li>
+                        <li>
+                            <a routerLink="/logout">
+                                <i class="fas fa-sign-out-alt"></i>
+                                <span>Sair</span>
+                            </a>
+                        </li>
+                    </ul>
+                  </li>
             </ul>
             <i class="bi bi-list mobile-nav-toggle"></i>
         </nav>

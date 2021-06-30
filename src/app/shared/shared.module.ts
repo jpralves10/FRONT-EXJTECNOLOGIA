@@ -21,6 +21,7 @@ import { CadastrarComponent } from './components/header/cadastrar/cadastrar.comp
 import { ConfirmedModalComponent } from './components/confirmed-modal/confirmed-modal.component';
 import { ApresentacaoModalComponent } from './components/home/apresentacao-modal/apresentacao-modal.component';
 import { BrowserModule } from "@angular/platform-browser";
+import { NgxSpinnerModule } from "ngx-spinner";
 
 @NgModule({
     imports: [
@@ -28,6 +29,7 @@ import { BrowserModule } from "@angular/platform-browser";
         FormsModule,
         RouterModule,
         ReactiveFormsModule,
+        NgxSpinnerModule,
         NgMultiSelectDropDownModule.forRoot(),
     ],
     declarations: [

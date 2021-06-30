@@ -5,33 +5,34 @@
             <div class="login">Login</div>
         </div>
 
-        <div class="row">
-            <div>
-                <div class="row">
-                    <div class="col-50">
-                        <label for="email"> E-mail</label>
-                        <input type="text" id="email" name="email">
+        <form [formGroup]="formLogin" (ngSubmit)="login()">
+            <div class="row">
+                <div>
+                    <div class="row">
+                        <div class="col-50">
+                            <label for="email"> E-mail</label>
+                            <input type="text" id="email" name="email" formControlName='email'>
+                        </div>
                     </div>
-                </div>
-        
-                <div class="row">
-                    <div class="col-50">
-                        <label for="senha"> Senha</label>
-                        <input type="password" id="senha" name="senha">
-                        <a class="recuperar-senha" (click)="esqueceuSenha()">Esqueceu a senha?</a>
+            
+                    <div class="row">
+                        <div class="col-50">
+                            <label for="senha"> Senha</label>
+                            <input type="password" id="senha" name="senha" formControlName='senha'>
+                            <a class="recuperar-senha" (click)="esqueceuSenha()">Esqueceu a senha?</a>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
 
-        <div class="row d-flex justify-content-center">
-            <button id="idConfirmBtn" 
-                type="submit"
-                class="btn-modal"
-                (click)="login()">
-                Entrar
-            </button>
-        </div>
+            <div class="row d-flex justify-content-center">
+                <button id="idConfirmBtn" 
+                    type="submit"
+                    class="btn-modal">
+                    Entrar
+                </button>
+            </div>
+        </form>
     </div>
 
     <div class="container" *ngIf="modoRecuperar">
@@ -60,3 +61,7 @@
         </div>
     </div>
 </section>
+
+<ngx-spinner bdColor="rgba(51,51,51,0.8)" size="medium" color="#fff" [type]="nomeTipoSpinner">
+	<p style="font-size: 20px; color: white">Loading...</p>
+</ngx-spinner>

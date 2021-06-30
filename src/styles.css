@@ -12,6 +12,7 @@ html {
 body {
     font-family: "Open Sans", sans-serif;
     color: #444444;
+    overflow-x: hidden;
 }
 
 a {

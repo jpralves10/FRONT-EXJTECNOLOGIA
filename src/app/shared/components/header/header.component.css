@@ -44,6 +44,10 @@
     max-height: 40px;
 }
 
+.profile-name {
+    padding-right: 0.3em;
+}
+
 /*--------------------------------------------------------------
 # Search
 --------------------------------------------------------------*/
@@ -81,7 +85,8 @@
 .navbar a, .navbar a:focus {
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
+    justify-content: normal;
     padding: 10px 0 10px 30px;
     font-size: 15px;
     font-weight: 500;
@@ -118,10 +123,11 @@
 .navbar .dropdown ul {
     display: block;
     position: absolute;
-    left: 14px;
+    left: 20px;
+    right: -70px;
     top: calc(100% + 30px);
     margin: 0;
-    padding: 10px 0;
+    /*padding: 10px 0;*/
     z-index: 99;
     opacity: 0;
     visibility: hidden;
@@ -136,11 +142,15 @@
 }
 
 .navbar .dropdown ul a {
-    padding: 10px 20px;
+    padding: 10px 10px;
     font-size: 14px;
     text-transform: none;
     font-weight: 500;
     color: #0c3c53;
+}
+
+.navbar .dropdown ul li a span {
+    padding-left: 10px;
 }
 
 .navbar .dropdown ul a i {

@@ -10,5 +10,12 @@ export interface Profile {
     totp?: boolean;
     createdTimestamp?: number;
     attributes?: object;
-    roles?: string[]
+    roles?: string[];
+    credentials?: Credentials[]
+}
+
+export interface Credentials {
+    type: string,
+    value: string,
+    temporary: boolean
 }

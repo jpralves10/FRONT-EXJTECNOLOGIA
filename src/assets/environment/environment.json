@@ -10,7 +10,9 @@
             "client_id": "exj-microservice",
             "redirect_uri": "http://localhost:4200",
             "response_type": "code",
-            "scope": "openid"
+            "scope": "openid",
+            "username": "jpralves10@gmail.com",
+            "password": "123"
         }
     }
 }
